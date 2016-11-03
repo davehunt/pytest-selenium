@@ -1,0 +1,37 @@
+cache:
+  - '%LOCALAPPDATA%\pip\Cache'
+environment:
+  global:
+    PYTEST_ADDOPTS: "-m 'not (safari or phantomjs)'"
+    RUST_LOG: debug
+  matrix:
+    - TOXENV: flake8
+      PYTHON_HOME: C:\Python35
+    - TOXENV: docs
+      PYTHON_HOME: C:\Python35
+    - TOXENV: py35-pytest30
+      PYTHON_HOME: C:\Python35
+    - TOXENV: py35-pytest29
+      PYTHON_HOME: C:\Python35
+    - TOXENV: flake8
+      PYTHON_HOME: C:\Python27
+    - TOXENV: docs
+      PYTHON_HOME: C:\Python27
+    - TOXENV: py27-pytest30
+      PYTHON_HOME: C:\Python27
+    - TOXENV: py27-pytest29
+      PYTHON_HOME: C:\Python27
+install:
+  - choco install firefox
+  - choco install googlechrome
+  - choco install selenium-chrome-driver
+  - choco install selenium-ie-driver
+  - choco install selenium-gecko-driver
+  - 'set PATH=C:\tools\selenium;%PATH%'
+  - '%PYTHON_HOME%\Scripts\pip --version'
+  - '%PYTHON_HOME%\Scripts\pip install tox'
+build: off
+test_script:
+  - cmd: '%PYTHON_HOME%\Scripts\tox'
+on_failure:
+  - appveyor PushArtifact C:\Users\appveyor\AppData\Local\Temp\1\pytest-current\testdir\test_launch0\geckodriver.log

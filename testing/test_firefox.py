@@ -11,6 +11,12 @@ def test_launch(testdir, httpserver):
     httpserver.serve_content(content='<h1>Success!</h1>')
     file_test = testdir.makepyfile("""
         import pytest
+
+        @pytest.fixture
+        def firefox_options(firefox_options):
+            firefox_options.log.level = 'trace'
+            return firefox_options
+
         @pytest.mark.nondestructive
         def test_pass(webtext):
             assert webtext == u'Success!'

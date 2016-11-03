@@ -35,14 +35,24 @@ def testdir(request, httpserver_base_url):
         """)
 
     def runpytestqa(*args, **kwargs):
-        return testdir.runpytest(httpserver_base_url, '--driver', 'Firefox',
-                                 *args, **kwargs)
+        return testdir.runpytest(
+            httpserver_base_url,
+            '--driver=Firefox',
+            '--tb=long',
+            '--showlocals',
+            *args,
+            **kwargs)
 
     testdir.runpytestqa = runpytestqa
 
     def inline_runqa(*args, **kwargs):
-        return testdir.inline_run(httpserver_base_url, '--driver', 'Firefox',
-                                  *args, **kwargs)
+        return testdir.inline_run(
+            httpserver_base_url,
+            '--driver=Firefox',
+            '--tb=long',
+            '--showlocals',
+            *args,
+            **kwargs)
 
     testdir.inline_runqa = inline_runqa
 
