@@ -3,7 +3,6 @@ cache:
 environment:
   global:
     PYTEST_ADDOPTS: "-m 'not (edge or safari or phantomjs)'"
-    RUST_LOG: debug
   matrix:
     - TOXENV: flake8
       PYTHON_HOME: C:\Python36
@@ -23,5 +22,9 @@ install:
   - '%PYTHON_HOME%\Scripts\pip --version'
   - '%PYTHON_HOME%\Scripts\pip install tox'
 build: off
+before_test:
+  - chromedriver.exe --version
+  - geckodriver.exe --version
+  - IEDriverServer.exe --version
 test_script:
   - cmd: '%PYTHON_HOME%\Scripts\tox'
