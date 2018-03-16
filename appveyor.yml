@@ -2,7 +2,7 @@ cache:
   - '%LOCALAPPDATA%\pip\Cache'
 environment:
   global:
-    PYTEST_ADDOPTS: "-m 'not (safari or phantomjs)'"
+    PYTEST_ADDOPTS: "-m 'not (edge or safari or phantomjs)'"
     RUST_LOG: debug
   matrix:
     - TOXENV: flake8
