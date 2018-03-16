@@ -14,11 +14,11 @@ environment:
     - TOXENV: py36
       PYTHON_HOME: C:\Python36
 install:
-  - choco install firefox
-  - choco install googlechrome
-  - choco install selenium-chrome-driver
-  - choco install selenium-ie-driver
-  - choco install selenium-gecko-driver
+  # - choco install firefox
+  # - choco install googlechrome
+  # - choco install selenium-chrome-driver
+  # - choco install selenium-ie-driver
+  # - choco install selenium-gecko-driver
   - 'set PATH=C:\tools\selenium;%PATH%'
   - '%PYTHON_HOME%\Scripts\pip --version'
   - '%PYTHON_HOME%\Scripts\pip install tox'
