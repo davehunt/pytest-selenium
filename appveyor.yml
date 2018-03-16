@@ -6,21 +6,13 @@ environment:
     RUST_LOG: debug
   matrix:
     - TOXENV: flake8
-      PYTHON_HOME: C:\Python35
+      PYTHON_HOME: C:\Python36
     - TOXENV: docs
-      PYTHON_HOME: C:\Python35
-    - TOXENV: py35-pytest30
-      PYTHON_HOME: C:\Python35
-    - TOXENV: py35-pytest29
-      PYTHON_HOME: C:\Python35
-    - TOXENV: flake8
+      PYTHON_HOME: C:\Python36
+    - TOXENV: py27
       PYTHON_HOME: C:\Python27
-    - TOXENV: docs
-      PYTHON_HOME: C:\Python27
-    - TOXENV: py27-pytest30
-      PYTHON_HOME: C:\Python27
-    - TOXENV: py27-pytest29
-      PYTHON_HOME: C:\Python27
+    - TOXENV: py36
+      PYTHON_HOME: C:\Python36
 install:
   - choco install firefox
   - choco install googlechrome
@@ -33,5 +25,3 @@ install:
 build: off
 test_script:
   - cmd: '%PYTHON_HOME%\Scripts\tox'
-on_failure:
-  - appveyor PushArtifact C:\Users\appveyor\AppData\Local\Temp\1\pytest-current\testdir\test_launch0\geckodriver.log

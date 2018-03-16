@@ -35,7 +35,7 @@ sudo: required
 env:
   global:
   - DISPLAY=:99.0
-  - PYTEST_ADDOPTS="-m 'not (chrome or edge or safari or phantomjs)'"
+  - PYTEST_ADDOPTS="-m 'not (chrome or ie or edge or safari or phantomjs)'"
 cache: pip
 before_install:
   - export GECKODRIVER_DOWNLOAD=`curl -s 'https://api.github.com/repos/mozilla/geckodriver/releases/latest' | python -c "import sys, json; r = json.load(sys.stdin); print([a for a in r['assets'] if 'linux64' in a['name']][0]['browser_download_url']);"`
